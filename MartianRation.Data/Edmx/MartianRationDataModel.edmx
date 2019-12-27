@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MartianRationDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="PacketRation">
+          <Key>
+            <PropertyRef Name="PacketId" />
+          </Key>
+          <Property Name="PacketId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PacketTypeId" Type="int" />
+          <Property Name="PacketContent" Type="varchar(max)" />
+          <Property Name="Calories" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ExpiryDate" Type="datetime" />
+          <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="PacketType">
+          <Key>
+            <PropertyRef Name="PacketTypeId" />
+          </Key>
+          <Property Name="PacketTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PacketNameType" Type="varchar" MaxLength="24" />
+        </EntityType>
+        <Function Name="getViewSchedule" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StartDate" Type="datetime" Mode="In" />
+        </Function>
+        <EntityContainer Name="MartianRationDBModelStoreContainer">
+          <EntitySet Name="PacketRation" EntityType="Self.PacketRation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PacketType" EntityType="Self.PacketType" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MartianRationDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="PacketRation">
+          <Key>
+            <PropertyRef Name="PacketId" />
+          </Key>
+          <Property Name="PacketId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PacketTypeId" Type="Int32" />
+          <Property Name="PacketContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Calories" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
+          <Property Name="Quantity" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityContainer Name="MartianRationDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PacketRation" EntityType="Self.PacketRation" />
+          <EntitySet Name="PacketType" EntityType="MartianRationDBModel.PacketType" />
+          <FunctionImport Name="getViewSchedule" ReturnType="Collection(MartianRationDBModel.getViewSchedule_Result)">
+            <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="PacketType">
+          <Key>
+            <PropertyRef Name="PacketTypeId" />
+          </Key>
+          <Property Name="PacketTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PacketNameType" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="getViewSchedule_Result">
+          <Property Type="Int64" Name="RowId" Nullable="true" />
+          <Property Type="DateTime" Name="ScheduleDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="PacketId" Nullable="false" />
+          <Property Type="Int32" Name="PacketTypeId" Nullable="true" />
+          <Property Type="DateTime" Name="ExpiryDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="PacketContent" Nullable="true" />
+          <Property Type="String" Name="PacketType" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Calories" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Quantity" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="QuantityText" Nullable="true" MaxLength="31" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MartianRationDBModelStoreContainer" CdmEntityContainer="MartianRationDBEntities">
+          <EntitySetMapping Name="PacketRation">
+            <EntityTypeMapping TypeName="MartianRationDBModel.PacketRation">
+              <MappingFragment StoreEntitySet="PacketRation">
+                <ScalarProperty Name="PacketId" ColumnName="PacketId" />
+                <ScalarProperty Name="PacketTypeId" ColumnName="PacketTypeId" />
+                <ScalarProperty Name="PacketContent" ColumnName="PacketContent" />
+                <ScalarProperty Name="Calories" ColumnName="Calories" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PacketType">
+            <EntityTypeMapping TypeName="MartianRationDBModel.PacketType">
+              <MappingFragment StoreEntitySet="PacketType">
+                <ScalarProperty Name="PacketNameType" ColumnName="PacketNameType" />
+                <ScalarProperty Name="PacketTypeId" ColumnName="PacketTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="getViewSchedule" FunctionName="MartianRationDBModel.Store.getViewSchedule">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MartianRationDBModel.getViewSchedule_Result">
+                <ScalarProperty Name="RowId" ColumnName="RowId" />
+                <ScalarProperty Name="ScheduleDate" ColumnName="ScheduleDate" />
+                <ScalarProperty Name="PacketId" ColumnName="PacketId" />
+                <ScalarProperty Name="PacketTypeId" ColumnName="PacketTypeId" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="PacketContent" ColumnName="PacketContent" />
+                <ScalarProperty Name="PacketType" ColumnName="PacketType" />
+                <ScalarProperty Name="Calories" ColumnName="Calories" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="QuantityText" ColumnName="QuantityText" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
