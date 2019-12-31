@@ -17,10 +17,10 @@ namespace MartianRation.Models
         public string PacketContent { get; set; }
         public string Calories { get; set; }
         public DateTime? ExpiryDate { get; set; }
-        public string strExpiryDate { get; set; }
+        public string StrExpiryDate { get; set; }
         public string Quantity { get; set; }
         public DateTime? ScheduleDate { get; set; }
-        public string strScheduleDate { get; set; }
+        public string StrScheduleDate { get; set; }
         //public string StartDate { get; set; }
         public string QuantityText { get; set; }
         public List<PacketRationResult> datalist { get; set; }

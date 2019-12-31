@@ -243,6 +243,7 @@
     <Content Include="Scripts\JS\jquery.validate.min.js" />
     <Content Include="Scripts\JS\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\JS\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\JS\jquery_1.8.3\jquery-1.8.3.min.js" />
     <Content Include="Scripts\JS\js\bootstrap.min.js" />
     <Content Include="Scripts\JS\js\dataTables.altEditor.free.js" />
     <Content Include="Scripts\JS\js\dataTables.buttons.min.js" />

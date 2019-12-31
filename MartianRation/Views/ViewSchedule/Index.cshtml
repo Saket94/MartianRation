@@ -35,53 +35,39 @@
             {
                 <table id="myTable" class="table table-bordered">
                     <caption></caption>
-                    @*<col />                    <col />*@
                     <colgroup span=3></colgroup>
                     <thead>
                         <tr style="background:gray;color:white;">
-                            <th>Schedule Date</th>
-
-                            <th>Packet Id</th>
-
-                            <th>Packet Type</th>
-
-                            <th>Packet Content</th>
-
-                            <th>Calories</th>
-
-                            <th>ExpiryDate</th>
-
-                            <th>Quantity</th>
+                            <th style="text-align:center">Schedule Date</th>
+                            <th style="text-align:center">Packet Id</th>
+                            <th style="text-align:center">Packet Type</th>
+                            <th style="text-align:center">Packet Content</th>
+                            <th style="text-align:center">Calories</th>
+                            <th style="text-align:center">ExpiryDate</th>
+                            <th style="text-align:center">Quantity</th>
                         </tr>
                     </thead>
                     @foreach (var item in Model.datalist)
                     {
                         <tr>
-                            <td>@item.strScheduleDate</td>
-                            <td>@item.QuantityText</td>
-                            <td>@item.PacketTypeName</td>
-                            <td>@item.PacketContent</td>
-                            <td>@item.Calories</td>
-                            <td>@item.strExpiryDate</td>
-                            <td>@item.Quantity</td>
+                            <td style="text-align:center">@item.StrScheduleDate</td>
+                            <td style="text-align:center">@item.QuantityText</td>
+                            <td style="text-align:center">@item.PacketTypeName</td>
+                            <td style="text-align:center">@item.PacketContent</td>
+                            <td style="text-align:center">@item.Calories</td>
+                            <td style="text-align:center">@item.StrExpiryDate</td>
+                            <td style="text-align:center">@item.Quantity</td>
 
                         </tr>
                     }
                 </table>
 
                 <div><p style="font-weight:bold"> Number of days you can survive with current inventory : @Model.ScheduleCount</p> </div>
-            }
-
-            @*<input type="button" value="View Schedule" id="btnViewSchedule" onclick="GetRationRecord();" />*@
-
+            }            
         }
 
-
-
-        @*<div><a href="http://localhost:52596/"> Back</a></div>*@
-
         <!-- Bootstrap -->
-        <script type="text/javascript" src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js'></script>
+        <script src="~/Scripts/JS/jquery_1.8.3/jquery-1.8.3.min.js"></script>
         <link href="~/Scripts/DatePicker/bootstrap-datepicker.css" rel="stylesheet" />
         <script src="~/Scripts/DatePicker/bootstrap-datepicker.js"></script>
         <script>

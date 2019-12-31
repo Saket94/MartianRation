@@ -18,7 +18,7 @@ namespace MartianRation.Controllers
         //    return View();
         //}
 
-        private IGenericService<Data.Edmx.PacketRation> _packetRationService = null;
+        private IGenericService<PacketRation> _packetRationService = null;
         private IGenericService<PacketType> _packetTypeService = null;
 
         /// <summary>
@@ -67,50 +67,14 @@ namespace MartianRation.Controllers
                     packetrationmodel.PacketId = item.PacketId;
                     packetrationmodel.PacketContent = item.PacketContent;
                     packetrationmodel.Quantity = item.Quantity;
-                    if (item.ExpiryDate == null)
-                    {
-                        packetrationmodel.ExpiryDate = "-";
-                    }
-                    else
-                    {
-                        packetrationmodel.ExpiryDate = item.ExpiryDate.Value.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
-                    }
 
-                    if (item.PacketTypeId == 1)
-                    {
-                        packetrationmodel.PacketTypeCode = "F" + item.PacketId;
-                        packetrationmodel.PacketTypeName = "Food";
-                    }
-                    else if (item.PacketTypeId == 2)
-                    {
-                        packetrationmodel.PacketTypeCode = "W" + item.PacketId;
-                        packetrationmodel.PacketTypeName = "Water";
-                    }
-
-                    if (item.PacketContent == null)
-                    {
-                        packetrationmodel.PacketContent = "-";
-                    }
-
-                    if (item.Quantity == null)
-                    {
-                        packetrationmodel.QuantityType = "-";
-                    }
-                    else
-                    {
-                        packetrationmodel.QuantityType = Convert.ToString(item.Quantity);
-                    }
-
+                    packetrationmodel.PacketTypeName = item.PacketTypeId == 1 ? "Food" : "Water";
+                    packetrationmodel.ExpiryDate = item.ExpiryDate == null ? "-" : item.ExpiryDate.Value.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    packetrationmodel.PacketTypeCode = item.PacketTypeId == 1 ? "F" + item.PacketId : "W" + item.PacketId;
+                    packetrationmodel.PacketContent = item.PacketContent == null ? "-" : item.PacketContent;
+                    packetrationmodel.QuantityType = item.Quantity == null ? "-" : Convert.ToString(item.Quantity);
+                    packetrationmodel.CaloriesContent = item.Calories == null ? "-" : Convert.ToString(item.Calories);
                     packetrationmodel.Calories = item.Calories;
-
-                    if (item.Calories == null)
-                    {
-                        packetrationmodel.CaloriesContent = "-";
-                    }
-                    else
-                    {
-                        packetrationmodel.CaloriesContent = Convert.ToString(item.Calories);
-                    }
 
                     mdllist.Add(packetrationmodel);
                 }
@@ -118,8 +82,8 @@ namespace MartianRation.Controllers
                 mdllist.ToList().OrderBy(x => x.PacketId);
 
             }
-            catch (Exception ex) { };
-
+            catch (Exception ex) {
+            };
             return Json(new { data = mdllist.ToList() }, JsonRequestBehavior.AllowGet);
         }
 
@@ -154,7 +118,6 @@ namespace MartianRation.Controllers
                         var packettypelist = _packetTypeService.GetAll();
                         packetrationmodel.PacketTypeList = new SelectList(packettypelist, "PacketTypeId", "PacketNameType", result.PacketTypeId);
                     }
-
                 }
                 else
                 {
@@ -223,7 +186,7 @@ namespace MartianRation.Controllers
                     else
                     {
                         //Save
-                        Data.Edmx.PacketRation tab = new Data.Edmx.PacketRation();
+                        PacketRation tab = new PacketRation();
                         tab.PacketTypeId = model.PacketTypeId;
                         tab.PacketContent = model.PacketContent;
                         tab.Calories = model.Calories;
@@ -241,7 +204,6 @@ namespace MartianRation.Controllers
                     }
                     _packetRationService.Save();
                     status = true;
-
                 }
             }
             catch (Exception ex)
@@ -284,6 +246,7 @@ namespace MartianRation.Controllers
             }
             return View(model);
         }
+        
         /// <summary>
         /// This post action method used to Delete  PacketRation selected info from database.        
         /// </summary>

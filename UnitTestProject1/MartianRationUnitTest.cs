@@ -20,7 +20,7 @@ namespace UnitTestProject1
         [TestMethod]
         public void RationPacket_TestMethod()
         {
-            this._packetRationService = new GenericService<MartianRation.Data.Edmx.PacketRation>();
+            this._packetRationService = new GenericService<PacketRation>();
             this._packetTypeService = new GenericService<PacketType>();
 
             RationController rationController = new RationController(_packetRationService, _packetTypeService);
@@ -37,7 +37,7 @@ namespace UnitTestProject1
         [TestMethod]
         public void GetRationData_TestMethod()
         {
-            this._packetRationService = new GenericService<MartianRation.Data.Edmx.PacketRation>();
+            this._packetRationService = new GenericService<PacketRation>();
             this._packetTypeService = new GenericService<PacketType>();
 
             RationController rationController = new RationController(_packetRationService, _packetTypeService);
@@ -49,12 +49,12 @@ namespace UnitTestProject1
         }
 
         /// <summary>
-        /// Below test case is written for testing the update ration record functionality for the ration management screen.
+        /// Below test case is written for testing the update ration food record functionality for the ration management screen.
         /// </summary>
         [TestMethod]
-        public void UpdateRationData_TestMethod()
+        public void UpdateRationFoodData_TestMethod()
         {
-            this._packetRationService = new GenericService<MartianRation.Data.Edmx.PacketRation>();
+            this._packetRationService = new GenericService<PacketRation>();
             this._packetTypeService = new GenericService<PacketType>();
 
             RationController rationController = new RationController(_packetRationService, _packetTypeService);
@@ -77,12 +77,59 @@ namespace UnitTestProject1
         }
 
         /// <summary>
-        /// Below test case is written for testing the insert ration record functionality for the ration management screen.
+        /// Below test case is written for testing the update ration water record without content functionality for the ration management screen.
         /// </summary>
         [TestMethod]
-        public void InsertRationData_TestMethod()
+        public void UpdateRationWaterData_TestMethod()
         {
-            this._packetRationService = new GenericService<MartianRation.Data.Edmx.PacketRation>();
+            this._packetRationService = new GenericService<PacketRation>();
+            this._packetTypeService = new GenericService<PacketType>();
+
+            RationController rationController = new RationController(_packetRationService, _packetTypeService);
+            PacketRationModel model = new PacketRationModel();
+            model.PacketId = 9;
+            model.PacketTypeId = 2;
+            model.Quantity = Convert.ToDecimal(1);
+
+            // Act
+            JsonResult result = rationController.Save(model) as JsonResult;
+            // Assert
+            Assert.IsTrue(Convert.ToString(result.Data) == "{ status = True }");
+            //Assert.IsNotNull(result);
+
+        }
+
+        /// <summary>
+        /// Below test case is written for testing the update ration water record with content functionality for the ration management screen.
+        /// </summary>
+        [TestMethod]
+        public void UpdateRationWaterWithContentData_TestMethod()
+        {
+            this._packetRationService = new GenericService<PacketRation>();
+            this._packetTypeService = new GenericService<PacketType>();
+
+            RationController rationController = new RationController(_packetRationService, _packetTypeService);
+            PacketRationModel model = new PacketRationModel();
+            model.PacketId = 33;
+            model.PacketTypeId = 2;
+            model.PacketContent = "Test Water Content";
+            model.Quantity = Convert.ToDecimal(2);
+
+            // Act
+            JsonResult result = rationController.Save(model) as JsonResult;
+            // Assert
+            Assert.IsTrue(Convert.ToString(result.Data) == "{ status = True }");
+            //Assert.IsNotNull(result);
+
+        }
+
+        /// <summary>
+        /// Below test case is written for testing the insert ration food record functionality for the ration management screen.
+        /// </summary>
+        [TestMethod]
+        public void InsertRationFoodData_TestMethod()
+        {
+            this._packetRationService = new GenericService<PacketRation>();
             this._packetTypeService = new GenericService<PacketType>();
 
             RationController rationController = new RationController(_packetRationService, _packetTypeService);
@@ -105,29 +152,81 @@ namespace UnitTestProject1
         }
 
         /// <summary>
+        /// Below test case is written for testing the insert ration water record without packet content functionality for the ration management screen.
+        /// </summary>
+        [TestMethod]
+        public void InsertRationWaterData_TestMethod()
+        {
+            this._packetRationService = new GenericService<PacketRation>();
+            this._packetTypeService = new GenericService<PacketType>();
+
+            RationController rationController = new RationController(_packetRationService, _packetTypeService);
+            PacketRationModel model = new PacketRationModel();
+            //model.PacketId = 8; this is not needed for Insert record as its auto generated by database.
+            model.PacketTypeId = 2;
+            model.Quantity = Convert.ToDecimal(2);
+
+            // Act
+            JsonResult result = rationController.Save(model) as JsonResult;
+            // Assert
+            Assert.IsTrue(Convert.ToString(result.Data) == "{ status = True }");
+            //Assert.IsNotNull(result);
+
+        }
+
+        /// <summary>
+        /// Below test case is written for testing the insert ration water record with packet content functionality for the ration management screen.
+        /// </summary>
+        [TestMethod]
+        public void InsertRationWaterWithContentData_TestMethod()
+        {
+            this._packetRationService = new GenericService<PacketRation>();
+            this._packetTypeService = new GenericService<PacketType>();
+
+            RationController rationController = new RationController(_packetRationService, _packetTypeService);
+            PacketRationModel model = new PacketRationModel();
+            //model.PacketId = 8; this is not needed for Insert record as its auto generated by database.
+            model.PacketTypeId = 2;
+            model.PacketContent = "Test Water Content";
+            model.Quantity = Convert.ToDecimal(2);
+
+            // Act
+            JsonResult result = rationController.Save(model) as JsonResult;
+            // Assert
+            Assert.IsTrue(Convert.ToString(result.Data) == "{ status = True }");
+            //Assert.IsNotNull(result);
+
+        }
+
+        /// <summary>
         /// Below test case is written for testing the delete ration record functionality for the ration management screen.
         /// </summary>
         [TestMethod]
         public void DeleteRationData_TestMethod()
         {
-            this._packetRationService = new GenericService<MartianRation.Data.Edmx.PacketRation>();
+            this._packetRationService = new GenericService<PacketRation>();
             this._packetTypeService = new GenericService<PacketType>();
 
             RationController rationController = new RationController(_packetRationService, _packetTypeService);
-
             PacketRationModel model = new PacketRationModel();
-
             model.Calories = null;
             model.ExpiryDate = null;
             model.PacketContent = null;
-            model.PacketId = 26;
+            model.PacketId = 53; //If Delete Test method throws error that means that id is not present in the database or already deleted.
             model.PacketTypeId = null;
             model.Quantity = null;
 
             // Act
             JsonResult result = rationController.DeleteRation(model) as JsonResult;
             // Assert
-            Assert.IsTrue(Convert.ToString(result.Data) == "{ status = True }");
+            if (Convert.ToString(result.Data) == "{ status = True }")
+            {
+                Assert.IsTrue(Convert.ToString(result.Data) == "{ status = True }");
+            }
+            else
+            {
+                Assert.IsFalse(Convert.ToString(result.Data) == "{ status = False }");
+            }
             //Assert.IsNotNull(result);
 
         }
