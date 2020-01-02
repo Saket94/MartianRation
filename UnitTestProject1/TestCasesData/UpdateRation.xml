@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TestData>
+  <Test_UpdateRation>
+    <PacketId>8</PacketId>
+    <PacketTypeId>1</PacketTypeId>
+    <PacketContent>Biscuits</PacketContent>
+    <ExpiryDate>02/10/2020</ExpiryDate>
+    <Calories>2000.00</Calories>    
+    <Quantity></Quantity>
+  </Test_UpdateRation>
+  <Test_UpdateRation>
+    <PacketId>7</PacketId>
+    <PacketTypeId>1</PacketTypeId>
+    <PacketContent>Biscuits</PacketContent>
+    <ExpiryDate>02/10/2020</ExpiryDate>
+    <Calories>1000.00</Calories>
+    <Quantity></Quantity>
+  </Test_UpdateRation>
+  <Test_UpdateRation>
+    <PacketId>33</PacketId>
+    <PacketTypeId>2</PacketTypeId>
+    <PacketContent></PacketContent>
+    <ExpiryDate></ExpiryDate>
+    <Calories></Calories>
+    <Quantity>2</Quantity>
+  </Test_UpdateRation>
+  <Test_UpdateRation>
+    <PacketId>9</PacketId>
+    <PacketTypeId>2</PacketTypeId>
+    <PacketContent></PacketContent>
+    <ExpiryDate></ExpiryDate>
+    <Calories></Calories>
+    <Quantity>1</Quantity>
+  </Test_UpdateRation>
+</TestData>

@@ -154,6 +154,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\PacketRationCustomModel.cs" />
     <Compile Include="Models\PacketRationResult.cs" />
     <Compile Include="Models\PacketRationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

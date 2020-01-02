@@ -29,7 +29,7 @@ namespace MartianRation.Models
         [Required (ErrorMessage = "Please enter calories")]
         public decimal? Calories { get; set; }
 
-        [Display(Name = "Expiry Date")]
+        [Display(Name = "Expiry Date")]     
         [Required(ErrorMessage = "Please enter expiry date")]
         public string ExpiryDate { get; set; }
         

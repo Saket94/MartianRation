@@ -34,7 +34,7 @@ namespace MartianRation.Controllers
         /// <summary>
         ///RationController Parameterized Constructor contains Generic class type parameter.       
         /// </summary>
-        public RationController(IGenericService<Data.Edmx.PacketRation> packetRationService, IGenericService<PacketType> packetTypeService)
+        public RationController(IGenericService<PacketRation> packetRationService, IGenericService<PacketType> packetTypeService)
         {
             this._packetRationService = packetRationService;
             this._packetTypeService = packetTypeService;
@@ -82,7 +82,8 @@ namespace MartianRation.Controllers
                 mdllist.ToList().OrderBy(x => x.PacketId);
 
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
             };
             return Json(new { data = mdllist.ToList() }, JsonRequestBehavior.AllowGet);
         }
@@ -111,8 +112,7 @@ namespace MartianRation.Controllers
                         packetrationmodel.Calories = result.Calories;
                         if (result.ExpiryDate != null)
                         {
-                            IFormatProvider culture = new CultureInfo("en-US", true);
-                            packetrationmodel.ExpiryDate = result.ExpiryDate.Value.ToString("dd/MM/yyyy", culture);
+                            packetrationmodel.ExpiryDate = result.ExpiryDate.Value.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
                         }
                         packetrationmodel.Quantity = result.Quantity;
                         var packettypelist = _packetTypeService.GetAll();
@@ -170,8 +170,9 @@ namespace MartianRation.Controllers
                             if (model.ExpiryDate != null && model.ExpiryDate != "")
                             {
                                 DateTime dtDate = DateTime.ParseExact(model.ExpiryDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                                string strDate = dtDate.ToString("yyyy-MM-dd");
-                                res.ExpiryDate = Convert.ToDateTime(strDate);
+                                res.ExpiryDate = dtDate;
+                                //string strDate = dtDate.ToString("yyyy-MM-dd");
+                                //res.ExpiryDate = Convert.ToDateTime(strDate);
                             }
                             else
                             {
@@ -193,8 +194,9 @@ namespace MartianRation.Controllers
                         if (model.ExpiryDate != null && model.ExpiryDate != "")
                         {
                             DateTime dtDate = DateTime.ParseExact(model.ExpiryDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                            string strDate = dtDate.ToString("yyyy-MM-dd");
-                            tab.ExpiryDate = Convert.ToDateTime(strDate);
+                            tab.ExpiryDate = dtDate;
+                            //string strDate = dtDate.ToString("yyyy-MM-dd");                            
+                            //tab.ExpiryDate = Convert.ToDateTime(strDate);
                         }
 
                         tab.Quantity = model.Quantity;
@@ -246,7 +248,7 @@ namespace MartianRation.Controllers
             }
             return View(model);
         }
-        
+
         /// <summary>
         /// This post action method used to Delete  PacketRation selected info from database.        
         /// </summary>

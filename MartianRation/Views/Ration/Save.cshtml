@@ -36,7 +36,7 @@
 
     <div class="form-group">
         @Html.LabelFor(model => model.ExpiryDate, htmlAttributes: new { @class = "control-label" })
-        @Html.EditorFor(model => model.ExpiryDate, new { htmlAttributes = new { @class = "form-control datepicker", @id = "datepicker", @autocomplete = "off" } })
+        @Html.EditorFor(model => model.ExpiryDate, new { htmlAttributes = new { @class = "form-control datepicker", @id = "datepicker", @autocomplete = "off"} })
         @Html.ValidationMessageFor(model => model.ExpiryDate, "", new { @class = "text-danger" })
 
     </div>
@@ -72,6 +72,7 @@
                 // for disable.....
                 $("#txtQuantity").prop("readonly", true);
                 $("#txtCalories").prop("readonly", false);
+                //$("#datepicker").prop("readonly", false);
                 $("#datepicker").prop("readonly", false);
                 //for remove or add validation...
                 $('#txtQuantity').rules('remove', 'required');
@@ -113,6 +114,7 @@
                 // for disable.....
                 $("#txtQuantity").prop("readonly", true);
                 $("#txtCalories").prop("readonly", false);
+                //$("#datepicker").prop("readonly", false);
                 $("#datepicker").prop("readonly", false);
                 //for remove or add validation...
                 $('#txtQuantity').rules('remove', 'required');

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+
+<TestData> 
+  <Test_ScheduleDate>
+    <ScheduleDate>25/12/2019</ScheduleDate>
+  </Test_ScheduleDate>
+  <Test_ScheduleDate>
+    <ScheduleDate>27/12/2019</ScheduleDate>
+  </Test_ScheduleDate>
+  <Test_ScheduleDate>
+    <ScheduleDate>29/12/2019</ScheduleDate>
+  </Test_ScheduleDate>
+  <Test_ScheduleDate>
+    <ScheduleDate>31/12/2019</ScheduleDate>
+  </Test_ScheduleDate>
+  <Test_ScheduleDate>
+    <ScheduleDate>01/06/2020</ScheduleDate>
+  </Test_ScheduleDate>
+  <Test_ScheduleDate>
+    <ScheduleDate>10/09/2020</ScheduleDate>
+  </Test_ScheduleDate>
+  <Test_ScheduleDate>
+    <ScheduleDate></ScheduleDate>
+  </Test_ScheduleDate> 
+</TestData>
+

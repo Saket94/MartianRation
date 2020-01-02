@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TestData>
+  <Test_DeleteRation>
+    <PacketTypeId>1</PacketTypeId>
+    <PacketContent>Test Record</PacketContent>
+    <ExpiryDate>02/10/2020</ExpiryDate>
+    <Calories>1000.00</Calories>
+    <Quantity></Quantity>
+  </Test_DeleteRation>
+</TestData>
