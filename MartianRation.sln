@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MartianRation.Data", "Marti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MartianRation.Code", "MartianRation.Code\MartianRation.Code.csproj", "{9CF7F019-CD72-4BEE-BDA4-EFC9751187F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MartianRationUnitTestProject", "UnitTestProject1\MartianRationUnitTestProject.csproj", "{111BD4F8-6355-4DA2-80B1-CB13528F9103}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MartianRationUnitTestProject", "MartianRationUnitTestProject\MartianRationUnitTestProject.csproj", "{111BD4F8-6355-4DA2-80B1-CB13528F9103}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

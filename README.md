@@ -31,10 +31,7 @@ This project is build using 3-tier architecture as mentioned below layers:-
 2.MartianRationUnitTestProject
   a.From the "MartianRationUnitTestProject" solution change connection string from App.config file.
   b.Change the data source,user id and password according to your sql credentials.
-  <connectionStrings>
-    <add name="MartianRationDBEntities" connectionString="metadata=res://*/Edmx.MartianRationDataModel.csdl|res://*/Edmx.MartianRationDataModel.ssdl|res://*/Edmx.MartianRationDataModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=10.10.10.113;initial catalog=MartianRationDB;user id=sa;password=cis1234;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
-  </connectionStrings>
-
+  
 ##Domain Driven Document
 
 We also have placed the domain driven diagram inside the "MartianRation" project solution with name "Domain_Driven_Code_Structure_Documentation.docx".
