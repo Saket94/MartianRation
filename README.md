@@ -23,13 +23,16 @@ This project is build using 3-tier architecture as mentioned below layers:-
 ## Modify Connection String from the below mentioned places
 
 1. MartianRation  
+
 	a. From the "MartianRation" solution change the connection string from the web.config file.
 
 2. MartianRation.Data
+
 	a. From the "MartianRation.Data" solution change connection string from App.config file.
 	b. Change the data source,user id and password according to your sql credentials.
 
 2. MartianRationUnitTestProject
+
 	a. From the "MartianRationUnitTestProject" solution change connection string from App.config file.
  	b. Change the data source,user id and password according to your sql credentials.
   
